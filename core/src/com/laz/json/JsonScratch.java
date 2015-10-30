@@ -7,6 +7,9 @@ import com.badlogic.gdx.utils.Json;
 
 //http://stackoverflow.com/questions/15731944/libgdx-why-is-my-button-not-responding-on-mouseclicks
 
+//jsonscratch will pop up a black screen that does essentially nothing, as everything is happening in the background
+//the program takes the variables from the JsonScratch class, transfers them to the variables in the Data class, then saves them to data.json
+//the program also reads from the data.json, puts the variables back into the Data class, then are transferred to the JsonScratch variables
 public class JsonScratch extends Game {
 
     private int nAttack = 1;
@@ -62,9 +65,9 @@ public class JsonScratch extends Game {
     public String readJson(String sName) {
         FileHandle file = Gdx.files.local(sName);
         if (file != null && file.exists()) {
-            String s = file.readString();
-            if (!s.isEmpty()) {
-                return com.badlogic.gdx.utils.Base64Coder.decodeString(s);
+            String sData = file.readString();
+            if (!sData.isEmpty()) {
+                return com.badlogic.gdx.utils.Base64Coder.decodeString(sData);
             }
         }
         return "";
